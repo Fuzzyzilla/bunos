@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://EditableTextarea.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Interactable.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/TextareaClick.tres" type="AudioStream" id=3]
+[ext_resource path="res://Objects/interact arrow.tscn" type="PackedScene" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="EditableTextarea" type="StaticBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Interactable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -10 )
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="Interactable"]
+stream = ExtResource( 3 )
+volume_db = -11.908
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 197.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0.643137, 0.290196, 0.247059, 1 )
+text = "hello there this is a longer text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="interact arrow" parent="." instance=ExtResource( 4 )]
+modulate = Color( 0.643137, 0.290196, 0.247059, 1 )
+position = Vector2( -13.999, 12 )
+rotation = -1.5708
+scale = Vector2( -9.34579e-08, 1e-05 )

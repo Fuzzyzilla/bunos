@@ -1,0 +1,18 @@
+[gd_scene format=2]
+
+[node name="TimedHint" type="Label"]
+visible = false
+margin_right = 366.0
+margin_bottom = 32.0
+text = "(try removing some text!)"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="set_visible" binds= [ true ]]

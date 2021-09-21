@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Objects/EditableTextarea.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Bun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/LevelLink.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/MoveableWindow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Scrollbar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/CloseableWindow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/TimedHint.tscn" type="PackedScene" id=7]
+
+[node name="More" type="Node2D"]
+
+[node name="Bun" parent="." instance=ExtResource( 2 )]
+position = Vector2( 864, 299 )
+
+[node name="EditableTextarea" parent="." instance=ExtResource( 1 )]
+position = Vector2( 48, 527 )
+scale = Vector2( 1.2, 1.2 )
+default_text = "sometimes you have to get a little creative."
+
+[node name="TimedHint" parent="." instance=ExtResource( 7 )]
+margin_left = 302.0
+margin_top = 602.0
+margin_right = 668.0
+margin_bottom = 634.0
+
+[node name="LevelLink" parent="." instance=ExtResource( 3 )]
+position = Vector2( 307, 838 )
+text = "next level"
+leads_to = "res://Scenes/High ump.tscn"
+
+[node name="Scrollbar" parent="." instance=ExtResource( 5 )]
+position = Vector2( 302, 312 )
+rotation = 3.14159
+start_pos = 0
+
+[node name="CloseableWindow" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1025, 551 )
+
+[node name="MoveableWindow" parent="." instance=ExtResource( 4 )]
+position = Vector2( 137, 133 )

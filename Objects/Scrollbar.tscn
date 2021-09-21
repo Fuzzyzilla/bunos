@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Scrollbar.gd" type="Script" id=1]
+[ext_resource path="res://Images/scrollbar.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Interactable.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 68, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 18, 16 )
+
+[node name="Scrollbar" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Dashes" type="NinePatchRect" parent="."]
+margin_top = -11.0
+margin_right = 215.0
+margin_bottom = 12.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 225, 0, 125, 36 )
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+axis_stretch_horizontal = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="StaticBody2D" parent="."]
+position = Vector2( 92, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Bar"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 65, 0, 142, 36 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bar"]
+shape = SubResource( 1 )
+
+[node name="Button" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Interactable" parent="Button" instance=ExtResource( 3 )]
+position = Vector2( 0, -30 )
+
+[node name="Sprite" type="Sprite" parent="Button"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 40, 36 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button"]
+shape = SubResource( 2 )
+
+[node name="Button2" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Interactable" parent="Button2" instance=ExtResource( 3 )]
+position = Vector2( 0, -30 )
+
+[node name="Sprite" type="Sprite" parent="Button2"]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 40, 36 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button2"]
+shape = SubResource( 2 )

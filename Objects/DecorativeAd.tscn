@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Images/window minimizable.png" type="Texture" id=1]
+[ext_resource path="res://Objects/WindowAds.tscn" type="PackedScene" id=2]
+
+[node name="window minimizable" type="Sprite"]
+modulate = Color( 1, 1, 1, 0.27451 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0.219238, 26.6828, 361.781, 283.317 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="WindowAds" parent="." instance=ExtResource( 2 )]
+position = Vector2( -2, -3 )

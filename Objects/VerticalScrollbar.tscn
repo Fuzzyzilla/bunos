@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Images/scrollbar.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/VerticalScrollbar.gd" type="Script" id=2]
+[ext_resource path="res://Objects/Interactable.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 68, 16 )
+
+[node name="VerticalScrollbar" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Dashes" type="NinePatchRect" parent="."]
+margin_left = 12.0
+margin_right = 227.0
+margin_bottom = 23.0
+rect_rotation = 90.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 225, 0, 125, 36 )
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+axis_stretch_horizontal = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bar" type="StaticBody2D" parent="."]
+position = Vector2( 0, 84 )
+rotation = 1.5708
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Bar"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 65, 0, 142, 36 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bar"]
+shape = SubResource( 1 )
+
+[node name="Interactable" parent="Bar" instance=ExtResource( 3 )]
+position = Vector2( -82, 3.58433e-06 )

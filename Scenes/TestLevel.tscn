@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Objects/Pictures.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://Objects/CloseableWindow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Scrollbar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/MoveableWindow.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/EditableTextarea.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/Bun.tscn" type="PackedScene" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 128, 32 )
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Bun" parent="." instance=ExtResource( 9 )]
+position = Vector2( 588, 415 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 536, 591 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="icon" type="Sprite" parent="StaticBody2D"]
+scale = Vector2( 4, 1 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 816, 559 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="icon" type="Sprite" parent="StaticBody2D2"]
+scale = Vector2( 4, 1 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource( 1 )
+
+[node name="MoveableWindow" parent="." instance=ExtResource( 7 )]
+position = Vector2( 196, 698 )
+
+[node name="MoveableWindow2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 210, 709 )
+
+[node name="MoveableWindow3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 196, 709 )
+
+[node name="CloseableWindow" parent="." instance=ExtResource( 5 )]
+position = Vector2( 233, 769 )
+
+[node name="EditableTextarea" parent="." instance=ExtResource( 8 )]
+position = Vector2( 475, 447 )
+
+[node name="Scrollbar" parent="." instance=ExtResource( 6 )]
+position = Vector2( 603, 499 )
+
+[node name="Pictures" parent="." instance=ExtResource( 1 )]
+margin_left = 279.0
+margin_top = 132.0
+margin_right = 886.0
+margin_bottom = 301.0

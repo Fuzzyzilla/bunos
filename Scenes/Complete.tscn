@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Objects/FinishButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/Bun.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/List.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/CloseableWindow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/MoveableWindow.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Pictures.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/EditableTextarea.tscn" type="PackedScene" id=7]
+
+[node name="Complete" type="Node2D"]
+
+[node name="Bun" parent="." instance=ExtResource( 2 )]
+position = Vector2( 492, 168 )
+
+[node name="List" parent="." instance=ExtResource( 3 )]
+margin_left = 857.0
+margin_top = 738.0
+margin_right = 1072.0
+margin_bottom = 1064.0
+
+[node name="EditableTextarea" parent="." instance=ExtResource( 7 )]
+position = Vector2( 427, 571 )
+default_text = "the end."
+
+[node name="FinishButton" parent="." instance=ExtResource( 1 )]
+position = Vector2( 474, 738 )
+
+[node name="CloseableWindow" parent="." instance=ExtResource( 4 )]
+position = Vector2( 24, 735 )
+
+[node name="CloseableWindow2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 177, 836 )
+
+[node name="Pictures" parent="." instance=ExtResource( 6 )]
+margin_left = 742.0
+margin_top = 618.0
+margin_right = 1044.0
+margin_bottom = 767.0
+
+[node name="MoveableWindow" parent="." instance=ExtResource( 5 )]
+position = Vector2( 760, 899 )

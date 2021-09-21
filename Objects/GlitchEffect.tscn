@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/GlitchEffect.gd" type="Script" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float amount = 0.03;
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453) * 2.0 - 1.0;
+}
+
+float offset(float blocks, vec2 uv, float time) {
+	return rand(vec2(time, floor(uv.y * blocks)));
+}
+
+void fragment()
+{
+	vec2 uv = UV;
+	uv.y = 1. - uv.y;
+    COLOR = texture(SCREEN_TEXTURE, uv);
+    
+	COLOR.r = texture(SCREEN_TEXTURE, uv + vec2(offset(16.0, uv, TIME) * amount, 0.0)).r;	
+	COLOR.g = texture(SCREEN_TEXTURE, uv + vec2(offset(8.0, uv, TIME) * amount * 0.16666666, 0.0)).g;
+	COLOR.b = texture(SCREEN_TEXTURE, uv + vec2(offset(8.0, uv, TIME) * amount, 0.0)).b;
+
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/amount = 0.0
+
+[node name="GlitchEffect" type="ColorRect"]
+material = SubResource( 2 )
+margin_right = 1024.0
+margin_bottom = 1024.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+amount = 0.0

@@ -1,0 +1,219 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/Subwindow.gd" type="Script" id=1]
+[ext_resource path="res://Images/window minimizable.png" type="Texture" id=2]
+[ext_resource path="res://Images/scrollbar.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/SettingsManager.gd" type="Script" id=4]
+[ext_resource path="res://Images/Ads/Bun.png" type="Texture" id=5]
+[ext_resource path="res://Sounds/low blip.wav" type="AudioStream" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Hide"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.25, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.01 ), Vector2( 1, 1.01 ), Vector2( 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "release_focus"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Reveal"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( -0.0771179, 0.30178, 43.3957, 37.7354 )
+
+[sub_resource type="StyleBoxLine" id=4]
+color = Color( 0.945098, 0.611765, 0.47451, 1 )
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id=5]
+color = Color( 0.643137, 0.290196, 0.247059, 1 )
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[node name="Settings" type="NinePatchRect"]
+margin_right = 649.0
+margin_bottom = 721.0
+texture = ExtResource( 2 )
+patch_margin_left = 28
+patch_margin_top = 34
+patch_margin_right = 42
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 9.0
+margin_top = 6.0
+margin_right = 174.0
+margin_bottom = 38.0
+rect_scale = Vector2( 0.75, 0.75 )
+text = "System Settings
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="minimize" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 596.0
+margin_right = 644.0
+margin_bottom = 38.0
+focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullscreenBg" type="NinePatchRect" parent="."]
+margin_left = 60.0
+margin_top = 384.0
+margin_right = 327.0
+margin_bottom = 453.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 28, 361, 279 )
+patch_margin_left = 8
+patch_margin_top = 7
+patch_margin_right = 5
+patch_margin_bottom = 3
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="FullscreenBg"]
+margin_left = 7.5
+margin_top = 21.5
+margin_right = 258.5
+margin_bottom = 53.5
+text = "Toggle fullscreen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToggleFullscreen" type="Button" parent="FullscreenBg"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_right = 267.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hide = SubResource( 1 )
+anims/Reveal = SubResource( 2 )
+
+[node name="VolumeSlider" type="HSlider" parent="."]
+margin_left = 50.0
+margin_top = 192.0
+margin_right = 412.0
+margin_bottom = 257.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_icons/grabber_highlight = SubResource( 3 )
+custom_icons/grabber = SubResource( 3 )
+custom_styles/slider = SubResource( 4 )
+custom_styles/grabber_area_highlight = SubResource( 5 )
+custom_styles/grabber_area = SubResource( 5 )
+max_value = 1.0
+step = 0.001
+value = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 231.0
+margin_top = 111.0
+margin_right = 347.0
+margin_bottom = 143.0
+rect_scale = Vector2( 1.5, 1.5 )
+text = "Volume:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsManager" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Bun" type="Sprite" parent="."]
+modulate = Color( 0.643137, 0.290196, 0.247059, 1 )
+self_modulate = Color( 1, 1, 1, 0.231373 )
+position = Vector2( 463, 573 )
+texture = ExtResource( 5 )
+
+[node name="OpenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+pitch_scale = 1.44
+
+[connection signal="pressed" from="minimize" to="." method="_on_minimize_pressed"]
+[connection signal="pressed" from="FullscreenBg/ToggleFullscreen" to="." method="_on_ToggleFullscreen_pressed"]
+[connection signal="value_changed" from="VolumeSlider" to="SettingsManager" method="_on_VolumeSlider_value_changed"]

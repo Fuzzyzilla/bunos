@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Objects/VerticalScrollbar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Objects/ScrollWall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Objects/Bun.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/CloseableWindow.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/List.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/EditableTextarea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Pictures.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Objects/LevelLink.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/HintLabel.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 208, 10 )
+
+[node name="Blockade" type="Node2D"]
+
+[node name="scrollbar3" parent="." instance=ExtResource( 2 )]
+margin_left = 674.0
+margin_top = 148.0
+margin_right = 991.0
+margin_bottom = 199.0
+rect_rotation = 90.0
+
+[node name="scrollbar4" parent="." instance=ExtResource( 2 )]
+margin_left = 603.0
+margin_top = 613.0
+margin_right = 809.0
+margin_bottom = 664.0
+rect_rotation = 90.0
+
+[node name="scrollbar" parent="." instance=ExtResource( 2 )]
+margin_left = -72.0
+margin_top = 613.0
+margin_right = 455.0
+margin_bottom = 664.0
+
+[node name="VerticalScrollbar" parent="." instance=ExtResource( 1 )]
+position = Vector2( 501, 325 )
+height = 350
+start_pos = 350
+
+[node name="CloseableWindow" parent="." instance=ExtResource( 4 )]
+position = Vector2( 648, 385 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="CloseableWindow2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 818, 412 )
+scale = Vector2( 0.6, 0.6 )
+
+[node name="Bun" parent="." instance=ExtResource( 3 )]
+position = Vector2( 175, 597 )
+scale = Vector2( 0.5, 0.5 )
+constant_scale = 0.5
+
+[node name="List" parent="." instance=ExtResource( 5 )]
+margin_left = 112.0
+margin_top = 32.0
+margin_right = 347.0
+margin_bottom = 285.0
+rect_scale = Vector2( 1.5, 1.5 )
+
+[node name="VerticalScrollbar2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 999, 327 )
+start_pos = 300
+
+[node name="EditableTextarea" parent="." instance=ExtResource( 6 )]
+position = Vector2( 628, 613 )
+default_text = "Username:"
+
+[node name="EditableTextarea2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 628, 645 )
+default_text = "Password:"
+
+[node name="Pictures" parent="." instance=ExtResource( 7 )]
+margin_left = -1.0
+margin_top = 840.0
+margin_right = 603.0
+margin_bottom = 989.0
+
+[node name="LevelLink" parent="." instance=ExtResource( 8 )]
+position = Vector2( 79, 796 )
+text = "next level"
+leads_to = "res://Scenes/Complete.tscn"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 687.0
+margin_top = 741.0
+margin_right = 967.0
+margin_bottom = 808.0
+text = "you can make text
+longer, too!"
+align = 1
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Area2D" type="Area2D" parent="Label"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Label/Area2D"]
+position = Vector2( 125, -26 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="Label/Area2D" to="Label" method="body_entered"]

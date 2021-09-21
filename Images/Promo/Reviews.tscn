@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Smood.tres" type="Material" id=1]
+[ext_resource path="res://Objects/LoadingCircle.tscn" type="PackedScene" id=2]
+
+[node name="Reviews" type="Node2D"]
+
+[node name="LoadingCircle" parent="." instance=ExtResource( 2 )]
+position = Vector2( 264, 270 )
+scale = Vector2( 8, 8 )
+
+[node name="LoadingCircle2" parent="." instance=ExtResource( 2 )]
+material = ExtResource( 1 )
+position = Vector2( 710, 712 )
+scale = Vector2( 8, 8 )

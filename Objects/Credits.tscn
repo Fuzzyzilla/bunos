@@ -1,0 +1,248 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Images/window minimizable.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Subwindow.gd" type="Script" id=2]
+[ext_resource path="res://Images/Ads/Chips.png" type="Texture" id=3]
+[ext_resource path="res://Objects/TextareaClick.tres" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/low blip.wav" type="AudioStream" id=5]
+[ext_resource path="res://Images/Ads/link.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="Animation" id=4]
+resource_name = "Hide"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.25, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1.01 ), Vector2( 1, 1.01 ), Vector2( 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("TextEdit")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "release_focus"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextEdit:readonly")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Reveal"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextEdit:readonly")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("TextEdit")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "grab_focus"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Credits" type="NinePatchRect"]
+margin_right = 649.0
+margin_bottom = 721.0
+texture = ExtResource( 1 )
+patch_margin_left = 28
+patch_margin_top = 34
+patch_margin_right = 42
+patch_margin_bottom = 9
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Chips" type="Sprite" parent="."]
+modulate = Color( 0.643137, 0.290196, 0.247059, 1 )
+self_modulate = Color( 1, 1, 1, 0.27451 )
+position = Vector2( 461, 577 )
+texture = ExtResource( 3 )
+region_rect = Rect2( 203.836, 79.6245, 148.049, 196.75 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 9.0
+margin_top = 6.0
+margin_right = 174.0
+margin_bottom = 38.0
+rect_scale = Vector2( 0.75, 0.75 )
+text = "Notepad: Credits.txt"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="."]
+margin_left = 9.0
+margin_top = 35.0
+margin_right = 637.0
+margin_bottom = 709.0
+custom_styles/read_only = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_colors/bookmark_color = Color( 0, 0, 0, 1 )
+custom_colors/selection_color = Color( 0.945098, 0.611765, 0.47451, 1 )
+custom_colors/caret_color = Color( 0.647059, 0.298039, 0.25098, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Art, code, and design made in 
+   fourty eight hours by
+   for the GMTK Game Jam
+
+Cutewritten font
+   by justhearforprettyfonts
+   via dafont.com
+Glitch Shader by jojjesv
+   via shadertoy.com
+Hard Drive sfx by FreeSoundStock
+
+Sound effects made with sfxr.me,
+   Audacity, and Helm
+
+Made using Godot Game Engine
+
+Thanks for playing!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="minimize" type="Button" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 596.0
+margin_right = 644.0
+margin_bottom = 38.0
+focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hide = SubResource( 4 )
+anims/Reveal = SubResource( 5 )
+
+[node name="ClickSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="OpenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+pitch_scale = 1.44
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color( 0.482353, 0.454902, 1, 1 )
+margin_left = 370.0
+margin_top = 74.0
+margin_right = 502.0
+margin_bottom = 106.0
+text = "Fuzzyzilla"
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="link" type="Sprite" parent="Label2"]
+position = Vector2( 148, 10 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="Label2"]
+margin_top = 26.0
+margin_right = 161.0
+margin_bottom = 28.0
+
+[node name="Link" type="Button" parent="Label2"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = -3.0
+margin_right = 161.0
+margin_bottom = 35.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="text_changed" from="TextEdit" to="." method="_on_TextEdit_text_changed"]
+[connection signal="pressed" from="minimize" to="." method="_on_minimize_pressed"]
+[connection signal="pressed" from="Label2/Link" to="." method="_on_Link_pressed"]

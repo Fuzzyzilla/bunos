@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/LevelLink.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Interactable.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Images/Ads/link.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="LevelLink" type="StaticBody2D"]
+modulate = Color( 0.227451, 0.184314, 1, 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+leads_to = "res://Scenes/Digging.tscn"
+
+[node name="Interactable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 0, -10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 197.0
+margin_bottom = 14.0
+text = "hello there this is a longer text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 12, 11 )
+scale = Vector2( 0.322115, 0.322115 )
+texture = ExtResource( 3 )
+
+[node name="Underline" type="ColorRect" parent="."]
+margin_top = 24.0
+margin_right = 40.0
+margin_bottom = 26.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interacted"]
